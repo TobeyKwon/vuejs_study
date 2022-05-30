@@ -1,9 +1,23 @@
 <template>
   <div class="discount">
-    <h4>지금 결제하면 20% 할인</h4>
+    <h4>지금 결제하면 {{ discountPolicy }}% 할인</h4>
   </div>
 </template>
-<script></script>
+<script>
+export default {
+  data() {
+    return { discountPolicy: 30 };
+  },
+  mounted() {
+    let interval = setInterval(() => {
+      this.discountPolicy -= 10;
+      if (this.discountPolicy == 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+  },
+};
+</script>
 <style>
 .discount {
   background-color: rgba(238, 238, 238, 0.592);
