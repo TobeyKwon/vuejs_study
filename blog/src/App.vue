@@ -1,17 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <header-nav />
+  <router-link to="/">홈</router-link>&nbsp;
+  <router-link to="/posts">리스트</router-link>
+  <router-view :posts="posts"></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderNav from "@/components/HeaderNav.vue";
+import posts from "./assets/list";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HeaderNav,
+  },
+  data() {
+    return {
+      posts,
+    };
+  },
+};
 </script>
 
 <style>
@@ -21,6 +29,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
